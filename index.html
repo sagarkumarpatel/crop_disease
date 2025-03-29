@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Crop Disease Detector</h1>
+            <p class="subtitle">Identify plant diseases using your camera or uploaded images</p>
+        </header>
+
+        <div class="detection-options">
+            <div class="option-card" id="webcam-option">
+                <h2>Live Camera Detection</h2>
+                <button type="button" onclick="initWebcam()">Start Camera</button>
+                <div id="webcam-container"></div>
+                <button type="button" id="stop-webcam" onclick="stopWebcam()" style="display: none;">Stop Camera</button>
+            </div>
+
+            <div class="option-card" id="upload-option">
+                <h2>Upload Image</h2>
+                <input type="file" id="image-upload" accept="image/*">
+                <div id="image-preview-container">
+                    <img id="uploaded-image" src="#" alt="Preview will appear here">
+                </div>
+                <button type="button" id="predict-upload" onclick="predictUpload()" disabled>Analyze Image</button>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <h2>Detection Results</h2>
+            <div id="label-container"></div>
+            <div id="disease-info"></div>
+        </div>
+
+        <footer>
+            <p>This tool helps farmers identify crop diseases early for better harvests.</p>
+        </footer>
+    </div>
+
+    <!-- Load TensorFlow.js and Teachable Machine image model -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    
+    <!-- Load our custom script -->
+    <script src="script.js"></script>
+</body>
+</html>
